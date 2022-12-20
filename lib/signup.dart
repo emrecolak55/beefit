@@ -10,6 +10,13 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
+    void pressbutton() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const SignUpPage()),
+      );
+    }
+
     return Scaffold(
         backgroundColor: Color.fromARGB(255, 231, 242, 229),
         // ignore: prefer_const_literals_to_create_immutables
@@ -173,19 +180,12 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
-                  child: Container(
-                    padding: EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      color: Colors.deepPurple,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Center(
-                        child: Text('Sign Up',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                                color: Colors.white))),
-                  ),
+                  child: ElevatedButton(
+                      onPressed: pressbutton,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.purple,
+                      ),
+                      child: const Text('SignUp')),
                 ),
               ],
             ),

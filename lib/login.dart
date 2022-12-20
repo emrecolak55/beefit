@@ -1,3 +1,4 @@
+import 'package:beefit/signup.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -10,6 +11,13 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
+    void pressbutton() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const SignUpPage()),
+      );
+    }
+
     return Scaffold(
         backgroundColor: Color.fromARGB(255, 231, 242, 229),
         // ignore: prefer_const_literals_to_create_immutables
@@ -122,6 +130,7 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(
                   height: 25,
                 ),
+
                 //password textfield
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -141,6 +150,12 @@ class _LoginPageState extends State<LoginPage> {
                     )
                   ],
                 ),
+                ElevatedButton(
+                    onPressed: pressbutton,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.purple,
+                    ),
+                    child: const Text('Go to Signup Page')),
                 // not a member? register
               ],
             ),
