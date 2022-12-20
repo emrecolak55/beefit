@@ -1,6 +1,6 @@
 import 'package:beefit/login.dart';
 import 'package:beefit/signup.dart';
-import 'package:beefit/profile.dart';
+import 'package:beefit/createProfile.dart';
 import 'package:beefit/inputs.dart';
 import 'package:flutter/material.dart';
 

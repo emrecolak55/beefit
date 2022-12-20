@@ -1,5 +1,6 @@
 import 'package:beefit/signup.dart';
 import 'package:flutter/material.dart';
+import 'package:beefit/profile.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -11,10 +12,27 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
-    void pressbutton() {
+    void goToSignUpPage() {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => const SignUpPage()),
+      );
+    }
+
+    void goToProfile() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ProfilePage(
+            name: 'John Doe',
+            email: 'john@example.com',
+            age: 30,
+            height: 75,
+            weight: 75,
+            photoUrl:
+                'https://this-person-does-not-exist.com/img/avatar-796f2700adb942342f62c69e9aff949a.jpg',
+          ),
+        ),
       );
     }
 
@@ -118,13 +136,12 @@ class _LoginPageState extends State<LoginPage> {
                       color: Colors.deepPurple,
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: Center(
-                        child: Text('Sign In',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                            ))),
+                    child: ElevatedButton(
+                        onPressed: goToProfile,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.purple,
+                        ),
+                        child: const Text('Sign In/Go profile')),
                   ),
                 ),
                 SizedBox(
@@ -151,7 +168,7 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
                 ElevatedButton(
-                    onPressed: pressbutton,
+                    onPressed: goToProfile,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.purple,
                     ),

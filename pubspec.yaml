@@ -61,6 +61,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/bee.jpg
+    - assets/images/blankuser.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
