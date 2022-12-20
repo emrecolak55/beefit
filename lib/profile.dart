@@ -1,13 +1,29 @@
 import 'package:flutter/material.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+class ProfilePage extends StatefulWidget {
+  const ProfilePage({super.key});
 
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  State<ProfilePage> createState() => _ProfilePageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _ProfilePageState extends State<ProfilePage> {
+  final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _ageController = TextEditingController();
+  final _heightController = TextEditingController();
+  final _weightController = TextEditingController();
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _emailController.dispose();
+    _ageController.dispose();
+    _heightController.dispose();
+    _weightController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,38 +33,19 @@ class _SignUpPageState extends State<SignUpPage> {
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              // ignore: prefer_const_literals_to_create_immutables
+// ignore: prefer_const_literals_to_create_immutables
               children: [
                 SizedBox(
                   height: 60,
                 ),
-
                 SizedBox(
                   height: 10,
                 ), // For space between
-                Text('Sign up for',
+                Text('User Profile',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 58,
+                      fontSize: 28,
                     )),
-                Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        'assets/images/bee.jpg',
-                        width: 80,
-                        height: 80,
-                      ),
-                      Text('Fit',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 58,
-                          )),
-                    ],
-                  ),
-                ),
-
                 SizedBox(
                   height: 50,
                 ),
@@ -66,6 +63,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20.0),
                       child: TextField(
+                        controller: _nameController,
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Name',
@@ -74,8 +72,10 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
-//email field
+                SizedBox(
+                  height: 20,
+                ),
+                //email field
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
@@ -89,6 +89,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20.0),
                       child: TextField(
+                        controller: _emailController,
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Email',
@@ -97,7 +98,10 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                 ),
-//confirm email field
+                SizedBox(
+                  height: 20,
+                ),
+                //age field
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
@@ -111,9 +115,11 @@ class _SignUpPageState extends State<SignUpPage> {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20.0),
                       child: TextField(
+                        controller: _ageController,
+                        keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           border: InputBorder.none,
-                          hintText: 'Confirm Email',
+                          hintText: 'Age',
                         ),
                       ),
                     ),
@@ -122,7 +128,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 SizedBox(
                   height: 20,
                 ),
-//password field
+                //height field
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
@@ -136,16 +142,20 @@ class _SignUpPageState extends State<SignUpPage> {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20.0),
                       child: TextField(
-                        obscureText: true,
+                        controller: _heightController,
+                        keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           border: InputBorder.none,
-                          hintText: 'Password',
+                          hintText: 'Height (cm)',
                         ),
                       ),
                     ),
                   ),
                 ),
-//confirm password field
+                SizedBox(
+                  height: 20,
+                ),
+//weight field
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
@@ -159,10 +169,11 @@ class _SignUpPageState extends State<SignUpPage> {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20.0),
                       child: TextField(
-                        obscureText: true,
+                        controller: _weightController,
+                        keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           border: InputBorder.none,
-                          hintText: 'Confirm Password',
+                          hintText: 'Weight (kg)',
                         ),
                       ),
                     ),
@@ -180,7 +191,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Center(
-                        child: Text('Sign Up',
+                        child: Text('Save Changes',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,

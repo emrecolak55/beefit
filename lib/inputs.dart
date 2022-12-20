@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class FoodInputPage extends StatefulWidget {
+  const FoodInputPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<FoodInputPage> createState() => _FoodInputPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _FoodInputPageState extends State<FoodInputPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,33 +26,15 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(
                   height: 10,
                 ), // For space between
-                Text('Welcome to',
+                Text('Enter Your Food and Exercise Information',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 58,
+                      fontSize: 28,
                     )),
-                Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        'assets/images/bee.jpg',
-                        width: 80,
-                        height: 80,
-                      ),
-                      Text('Fit',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 58,
-                          )),
-                    ],
-                  ),
-                ),
-
                 SizedBox(
                   height: 50,
                 ),
-                //email field
+                //food name field
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
@@ -68,7 +50,33 @@ class _LoginPageState extends State<LoginPage> {
                       child: TextField(
                         decoration: InputDecoration(
                           border: InputBorder.none,
-                          hintText: 'Email',
+                          hintText: 'Food Name',
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                //calories field
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      border: Border.all(
+                        color: Colors.white,
+                      ),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20.0),
+                      child: TextField(
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Amounts',
                         ),
                       ),
                     ),
@@ -90,10 +98,35 @@ class _LoginPageState extends State<LoginPage> {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20.0),
                       child: TextField(
-                        obscureText: true,
                         decoration: InputDecoration(
                           border: InputBorder.none,
-                          hintText: 'Password',
+                          hintText: 'Exercise Name',
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                //calories field
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      border: Border.all(
+                        color: Colors.white,
+                      ),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20.0),
+                      child: TextField(
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Time Spent',
                         ),
                       ),
                     ),
@@ -111,37 +144,13 @@ class _LoginPageState extends State<LoginPage> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Center(
-                        child: Text('Sign In',
+                        child: Text('Apply',
                             style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                            ))),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                                color: Colors.white))),
                   ),
                 ),
-                SizedBox(
-                  height: 25,
-                ),
-                //password textfield
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Not a member?',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      'Register now',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    )
-                  ],
-                ),
-                // not a member? register
               ],
             ),
           ),
