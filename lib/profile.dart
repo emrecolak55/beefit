@@ -1,4 +1,5 @@
-import 'package:beefit/login.dart';
+import 'package:beefit/inputs.dart';
+import 'package:beefit/feedback.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -50,10 +51,35 @@ class _ProfilePageState extends State<ProfilePage> {
 
   void _onItemTapped(int index) {
     setState(() {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const LoginPage()),
-      );
+      switch (index) {
+        case 0:
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ProfilePage(
+                      name: 'John Doe',
+                      email: 'john@example.com',
+                      age: 30,
+                      height: 75,
+                      weight: 75,
+                      photoUrl:
+                          'https://this-person-does-not-exist.com/img/avatar-796f2700adb942342f62c69e9aff949a.jpg',
+                    )),
+          );
+          break;
+        case 1:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => FoodInputPage()),
+          );
+          break;
+        case 2:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => FeedbackPage()),
+          );
+          break;
+      }
       _selectedIndex = index;
     });
   }

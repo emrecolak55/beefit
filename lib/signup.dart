@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:beefit/profile.dart';
 import 'package:beefit/createProfile.dart';
 
 class SignUpPage extends StatefulWidget {
