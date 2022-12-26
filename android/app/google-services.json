@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1035354071090",
+    "project_id": "bright-feat-372314",
+    "storage_bucket": "bright-feat-372314.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1035354071090:android:5ff716721e08502f791c2b",
+        "android_client_info": {
+          "package_name": "com.example.beefit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1035354071090-35nqa3t6ueco4spjdma66nmisdk3id05.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-of7l0GRmClUZciR1Ak8GgBJIpmKLHY0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1035354071090-35nqa3t6ueco4spjdma66nmisdk3id05.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1035354071090-5lu5cpun669akd6r5tq514fqjmm837sr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.beefit"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

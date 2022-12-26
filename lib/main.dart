@@ -1,21 +1,24 @@
-import 'package:beefit/login.dart';
-import 'package:beefit/signup.dart';
-import 'package:beefit/createProfile.dart';
-import 'package:beefit/inputs.dart';
+import 'package:beefit/widget_tree.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main(List<String> args) {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      theme: ThemeData(
+        primarySwatch: Colors.orange,
+      ),
+      home: const WidgetTree(),
     );
   }
 }
