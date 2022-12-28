@@ -2,6 +2,8 @@ import 'package:beefit/inputs.dart';
 import 'package:beefit/feedback.dart';
 import 'package:flutter/material.dart';
 
+import 'auth.dart';
+
 class ProfilePage extends StatefulWidget {
   final String name;
   final String email;
@@ -63,7 +65,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       height: 75,
                       weight: 75,
                       photoUrl:
-                          'https://this-person-does-not-exist.com/img/avatar-796f2700adb942342f62c69e9aff949a.jpg',
+                          'https://mymodernmet.com/wp/wp-content/uploads/2019/09/100k-ai-faces-5.jpg',
                     )),
           );
           break;
@@ -84,11 +86,23 @@ class _ProfilePageState extends State<ProfilePage> {
     });
   }
 
+  Future<void> signOut() async {
+    await Auth().signOut();
+  }
+
+  Widget _signOutButton() {
+    return ElevatedButton(
+      onPressed: signOut,
+      child: const Text('Sign Out'),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
         children: [
+          _signOutButton(),
           Container(
             height: 300,
             color: Colors.grey[200],

@@ -1,6 +1,16 @@
 import 'package:beefit/signup.dart';
+<<<<<<< Updated upstream
 import 'package:flutter/material.dart';
 import 'package:beefit/profile.dart';
+=======
+import 'package:beefit/signup.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:beefit/profile.dart';
+import 'package:http/http.dart' as http;
+
+import 'auth.dart';
+>>>>>>> Stashed changes
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -10,6 +20,26 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+<<<<<<< Updated upstream
+=======
+  String? errorMessage = '';
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  Future<void> signInWithEmailAndPassword() async {
+    try {
+      await Auth().signInWithEmailAndPassword(
+        email: _emailController.text,
+        password: _passwordController.text,
+      );
+    } on FirebaseAuthException catch (e) {
+      setState(() {
+        errorMessage = e.message;
+      });
+    }
+  }
+
+>>>>>>> Stashed changes
   @override
   Widget build(BuildContext context) {
     void goToSignUpPage() {
@@ -30,7 +60,11 @@ class _LoginPageState extends State<LoginPage> {
             height: 75,
             weight: 75,
             photoUrl:
+<<<<<<< Updated upstream
                 'https://this-person-does-not-exist.com/img/avatar-796f2700adb942342f62c69e9aff949a.jpg',
+=======
+                'https://mymodernmet.com/wp/wp-content/uploads/2019/09/100k-ai-faces-5.jpg',
+>>>>>>> Stashed changes
           ),
         ),
       );
@@ -92,6 +126,10 @@ class _LoginPageState extends State<LoginPage> {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20.0),
                       child: TextField(
+<<<<<<< Updated upstream
+=======
+                        controller: _emailController,
+>>>>>>> Stashed changes
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Email',
@@ -116,6 +154,10 @@ class _LoginPageState extends State<LoginPage> {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20.0),
                       child: TextField(
+<<<<<<< Updated upstream
+=======
+                        controller: _passwordController,
+>>>>>>> Stashed changes
                         obscureText: true,
                         decoration: InputDecoration(
                           border: InputBorder.none,
@@ -128,6 +170,7 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(
                   height: 15,
                 ),
+<<<<<<< Updated upstream
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: Container(
@@ -138,6 +181,19 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     child: ElevatedButton(
                         onPressed: goToProfile,
+=======
+                Container(
+                  padding: EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: Colors.deepPurple,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25),
+                    child: ElevatedButton(
+                        onPressed:
+                            signInWithEmailAndPassword, // firebase sign in call
+>>>>>>> Stashed changes
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.purple,
                         ),
@@ -151,6 +207,10 @@ class _LoginPageState extends State<LoginPage> {
                 //password textfield
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
+<<<<<<< Updated upstream
+=======
+                  // ignore: prefer_const_literals_to_create_immutables
+>>>>>>> Stashed changes
                   children: [
                     Text(
                       'Not a member?',
@@ -168,7 +228,11 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
                 ElevatedButton(
+<<<<<<< Updated upstream
                     onPressed: goToProfile,
+=======
+                    onPressed: goToSignUpPage, // edit
+>>>>>>> Stashed changes
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.purple,
                     ),

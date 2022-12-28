@@ -1,31 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:beefit/profile.dart';
+import 'package:beefit/signup.dart';
 
-class CreateProfile extends StatefulWidget {
-  const CreateProfile({super.key});
+class CreateProfilePage extends StatefulWidget {
+  const CreateProfilePage({super.key});
 
   @override
-  State<CreateProfile> createState() => _CreateProfileState();
+  State<CreateProfilePage> createState() => _CreateProfilePageState();
 }
 
-class _CreateProfileState extends State<CreateProfile> {
-  final _nameController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _ageController = TextEditingController();
-  final _heightController = TextEditingController();
-  final _weightController = TextEditingController();
-
-  @override
-  void dispose() {
-    _nameController.dispose();
-    _emailController.dispose();
-    _ageController.dispose();
-    _heightController.dispose();
-    _weightController.dispose();
-    super.dispose();
+class _CreateProfilePageState extends State<CreateProfilePage> {
+  Widget inputBox(String text) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.grey[200],
+          border: Border.all(
+            color: Colors.white,
+          ),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 20.0),
+          child: TextField(
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              hintText: text,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
+    void pressbutton() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                const SignUpPage()), //////////////////////// DEĞİŞTİR
+      );
+    }
+
     return Scaffold(
         backgroundColor: Color.fromARGB(255, 231, 242, 229),
         // ignore: prefer_const_literals_to_create_immutables
@@ -33,170 +52,69 @@ class _CreateProfileState extends State<CreateProfile> {
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-// ignore: prefer_const_literals_to_create_immutables
+              // ignore: prefer_const_literals_to_create_immutables
               children: [
                 SizedBox(
                   height: 60,
                 ),
+
                 SizedBox(
                   height: 10,
                 ), // For space between
-                Text('Enter your information to finish setting up your profile',
+                Text('Enter Your Profile Details',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 28,
+                      fontSize: 58,
                     )),
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/images/bee.jpg',
+                        width: 80,
+                        height: 80,
+                      ),
+                      Text('Fit',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 58,
+                          )),
+                    ],
+                  ),
+                ),
+
                 SizedBox(
                   height: 50,
                 ),
                 //name field
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      border: Border.all(
-                        color: Colors.white,
-                      ),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
-                      child: TextField(
-                        controller: _nameController,
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Name',
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                inputBox("name"),
+                SizedBox(height: 20),
+//email field
+                inputBox("age"),
+//confirm email field
                 SizedBox(
                   height: 20,
                 ),
-                //email field
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      border: Border.all(
-                        color: Colors.white,
-                      ),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
-                      child: TextField(
-                        controller: _emailController,
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Email',
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                inputBox("height"),
                 SizedBox(
                   height: 20,
                 ),
-                //age field
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      border: Border.all(
-                        color: Colors.white,
-                      ),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
-                      child: TextField(
-                        controller: _ageController,
-                        keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Age',
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                //height field
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      border: Border.all(
-                        color: Colors.white,
-                      ),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
-                      child: TextField(
-                        controller: _heightController,
-                        keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Height (cm)',
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-//weight field
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      border: Border.all(
-                        color: Colors.white,
-                      ),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
-                      child: TextField(
-                        controller: _weightController,
-                        keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Weight (kg)',
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+//password field
+
+//confirm password field
+                inputBox("weight"),
                 SizedBox(
                   height: 15,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
-                  child: Container(
-                    padding: EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      color: Colors.deepPurple,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Center(
-                        child: Text('Save Changes',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                                color: Colors.white))),
-                  ),
+                  child: ElevatedButton(
+                      onPressed: pressbutton,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.purple,
+                      ),
+                      child: const Text('SignUp')),
                 ),
               ],
             ),
