@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:beefit/profile.dart';
+import 'package:mysql1/mysql1.dart';
 import 'package:beefit/signup.dart';
 
 class CreateProfilePage extends StatefulWidget {

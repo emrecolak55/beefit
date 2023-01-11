@@ -1,3 +1,4 @@
+/*
 import 'package:flutter/material.dart';
 import 'package:mysql1/mysql1.dart';
 
@@ -22,7 +23,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   // Connection object
-  MySqlConnection conn;
+  late MySqlConnection conn;
 
   // List of users
   List<Map<String, dynamic>> users = [];
@@ -119,3 +120,5 @@ class _HomePageState extends State<HomePage> {
     _getUsers();
   }
 }
+
+*/
