@@ -23,6 +23,7 @@ class _FoodInputPageState extends State<FoodInputPage> {
                       email: 'john@example.com',
                       age: 30,
                       height: 75,
+                      gender: 'Male',
                       weight: 75,
                       photoUrl:
                           'https://this-person-does-not-exist.com/img/avatar-796f2700adb942342f62c69e9aff949a.jpg',

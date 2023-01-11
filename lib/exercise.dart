@@ -14,15 +14,17 @@ class _ExercisePageState extends State<ExercisePage> {
   // get what user typed
   final _textController = TextEditingController();
   //String stToInt = '';
-  int userPost = 0;
-  var _friendVal;
-  List _friendsName = [
-    'Shoulder',
-    'Arm',
-    'Brast',
-    'Back Area',
-    'Abdominal',
-    'Leg',
+  double _userPost = 0;
+  var userPost;
+  var _exerciseVal;
+  List _exerciseName = [
+    'Run',
+    'Swim',
+    'Walk',
+    'Tennis',
+    'Volleyball',
+    'Football',
+    'Pilates',
   ];
   int _selectedIndex = 0;
   void _onItemTapped(int index) {
@@ -31,34 +33,35 @@ class _ExercisePageState extends State<ExercisePage> {
         case 0:
           Navigator.push(
             context,
-            MaterialPageRoute(
-                builder: (context) => ProfilePage(
-                      name: 'John Doe',
-                      email: 'john@example.com',
-                      age: 30,
-                      height: 75,
-                      weight: 75,
-                      photoUrl:
-                          'https://this-person-does-not-exist.com/img/avatar-796f2700adb942342f62c69e9aff949a.jpg',
-                    )),
+            MaterialPageRoute(builder: (context) => FoodPage()),
           );
           break;
         case 1:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => FoodPage()),
+            MaterialPageRoute(builder: (context) => ExercisePage()),
           );
           break;
         case 2:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => ExercisePage()),
+            MaterialPageRoute(builder: (context) => FeedbackPage()),
           );
           break;
         case 3:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => FeedbackPage()),
+            MaterialPageRoute(
+                builder: (context) => ProfilePage(
+                      name: 'John Doe',
+                      email: 'john@example.com',
+                      age: 30,
+                      gender: 'Male',
+                      height: 75,
+                      weight: 75,
+                      photoUrl:
+                          'https://this-person-does-not-exist.com/img/avatar-796f2700adb942342f62c69e9aff949a.jpg',
+                    )),
           );
           break;
       }
@@ -112,13 +115,13 @@ class _ExercisePageState extends State<ExercisePage> {
                     child: DropdownButton(
                       isExpanded: true,
                       hint: Text("Select a category"),
-                      value: _friendVal,
+                      value: _exerciseVal,
                       onChanged: (value) {
                         setState(() {
-                          _friendVal = value;
+                          _exerciseVal = value;
                         });
                       },
-                      items: _friendsName.map((value) {
+                      items: _exerciseName.map((value) {
                         return DropdownMenuItem(
                           value: value,
                           child: Text(value),
@@ -132,31 +135,6 @@ class _ExercisePageState extends State<ExercisePage> {
                 height: 20,
               ),
               //calories field
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    border: Border.all(
-                      color: Colors.white,
-                    ),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20.0),
-                    child: TextField(
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'Exercise Name',
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
@@ -191,7 +169,28 @@ class _ExercisePageState extends State<ExercisePage> {
               MaterialButton(
                 onPressed: () {
                   setState(() {
-                    userPost = int.parse(_textController.text) * 10;
+                    if (_exerciseVal == 'Run') {
+                      userPost = int.parse(_textController.text) / 60 * 580;
+                      _userPost = userPost;
+                    } else if (_exerciseVal == 'Swim') {
+                      userPost = int.parse(_textController.text) / 60 * 550;
+                      _userPost = userPost;
+                    } else if (_exerciseVal == 'Walk') {
+                      userPost = int.parse(_textController.text) / 60 * 315;
+                      _userPost = userPost;
+                    } else if (_exerciseVal == 'Tennis') {
+                      userPost = int.parse(_textController.text) / 60 * 460;
+                      _userPost = userPost;
+                    } else if (_exerciseVal == 'Volleyball') {
+                      userPost = int.parse(_textController.text) / 60 * 364;
+                      _userPost = userPost;
+                    } else if (_exerciseVal == 'Football') {
+                      userPost = int.parse(_textController.text) / 60 * 620;
+                      _userPost = userPost;
+                    } else if (_exerciseVal == 'Pilates') {
+                      userPost = int.parse(_textController.text) / 60 * 225;
+                      _userPost = userPost;
+                    }
                     //userPost = _textController.value as int;
                   });
                 },
@@ -226,7 +225,7 @@ class _ExercisePageState extends State<ExercisePage> {
                   Expanded(
                       child: Container(
                           child: Center(
-                              child: Text("$userPost",
+                              child: Text("$_userPost" "   kcal",
                                   textAlign: TextAlign.left,
                                   style: TextStyle(fontSize: 35))))),
                 ],
@@ -237,11 +236,6 @@ class _ExercisePageState extends State<ExercisePage> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-            //backgroundColor: Colors.grey,
-          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.fastfood),
             label: 'Food',
@@ -255,6 +249,11 @@ class _ExercisePageState extends State<ExercisePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.feed),
             label: 'Feedback',
+            backgroundColor: Colors.grey,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
             backgroundColor: Colors.grey,
           ),
         ],

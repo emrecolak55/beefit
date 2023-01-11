@@ -14,14 +14,22 @@ class _FoodPageState extends State<FoodPage> {
   // get whta user typed
   final _textController = TextEditingController();
   //String stToInt = '';
-  int userPost = 0;
-  var _friendVal;
-  List _friendsName = [
+  var userPost;
+  double _userPost = 0;
+  var _categoryVal;
+  List _categoryName = [
     'Fruit',
     'Vegetables',
     'Meat',
     'Junk Food',
     'Bakery',
+  ];
+  var _nameVal;
+  List _name = [
+    'Red Meat                               2030 kcal/kg',
+    'Chicken                                  2390 kcal/kg',
+    'Fish                                         2058 kcal/kg',
+    'Turkey                                     1888 kcal/kg',
   ];
   int _selectedIndex = 0;
   void _onItemTapped(int index) {
@@ -30,38 +38,39 @@ class _FoodPageState extends State<FoodPage> {
         case 0:
           Navigator.push(
             context,
+            MaterialPageRoute(builder: (context) => FoodPage()),
+          );
+          break;
+        case 1:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ExercisePage()),
+          );
+          break;
+        case 2:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => FeedbackPage()),
+          );
+          break;
+        case 3:
+          Navigator.push(
+            context,
             MaterialPageRoute(
                 builder: (context) => ProfilePage(
                       name: 'John Doe',
                       email: 'john@example.com',
                       age: 30,
                       height: 75,
+                      gender: 'Male',
                       weight: 75,
                       photoUrl:
                           'https://this-person-does-not-exist.com/img/avatar-796f2700adb942342f62c69e9aff949a.jpg',
                     )),
           );
           break;
-        case 1:
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => FoodPage()),
-          );
-          break;
-        case 2:
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => ExercisePage()),
-          );
-          break;
-        case 3:
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => FeedbackPage()),
-          );
-          break;
-          _selectedIndex = index;
       }
+      _selectedIndex = index;
     });
   }
 
@@ -110,13 +119,13 @@ class _FoodPageState extends State<FoodPage> {
                     child: DropdownButton(
                       isExpanded: true,
                       hint: Text("Select a category"),
-                      value: _friendVal,
+                      value: _categoryVal,
                       onChanged: (value) {
                         setState(() {
-                          _friendVal = value;
+                          _categoryVal = value;
                         });
                       },
-                      items: _friendsName.map((value) {
+                      items: _categoryName.map((value) {
                         return DropdownMenuItem(
                           value: value,
                           child: Text(value),
@@ -129,8 +138,42 @@ class _FoodPageState extends State<FoodPage> {
               SizedBox(
                 height: 20,
               ),
-              //calories field
               Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    border: Border.all(
+                      color: Colors.white,
+                    ),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20.0),
+                    child: DropdownButton(
+                      isExpanded: true,
+                      hint: Text("Select a food"),
+                      value: _nameVal,
+                      onChanged: (_value) {
+                        setState(() {
+                          _nameVal = _value;
+                        });
+                      },
+                      items: _name.map((_value) {
+                        return DropdownMenuItem(
+                          value: _value,
+                          child: Text(_value),
+                        );
+                      }).toList(),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              //calories field
+              /*Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
                   decoration: BoxDecoration(
@@ -146,7 +189,7 @@ class _FoodPageState extends State<FoodPage> {
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: 'Food Name',
+                        hintText: 'Select Name',
                       ),
                     ),
                   ),
@@ -154,7 +197,7 @@ class _FoodPageState extends State<FoodPage> {
               ),
               SizedBox(
                 height: 20,
-              ),
+              ),*/
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
@@ -172,7 +215,7 @@ class _FoodPageState extends State<FoodPage> {
                       controller: _textController,
                       decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: 'Amount',
+                        hintText: 'Amount (g)',
                       ),
                     ),
                   ),
@@ -189,7 +232,24 @@ class _FoodPageState extends State<FoodPage> {
               MaterialButton(
                 onPressed: () {
                   setState(() {
-                    userPost = int.parse(_textController.text) * 10;
+                    if (_nameVal ==
+                        'Red Meat                               2030 kcal/kg') {
+                      userPost = int.parse(_textController.text) * 2.030;
+                      _userPost = userPost;
+                    } else if (_nameVal ==
+                        'Chicken                                  2390 kcal/kg') {
+                      userPost = int.parse(_textController.text) * 2.390;
+                      _userPost = userPost;
+                    } else if (_nameVal ==
+                        'Fish                                         2058 kcal/kg') {
+                      userPost = int.parse(_textController.text) * 2.058;
+                      _userPost = userPost;
+                    } else if (_nameVal ==
+                        'Turkey                                     1888 kcal/kg') {
+                      userPost = int.parse(_textController.text) * 1.888;
+                      _userPost = userPost;
+                    }
+
                     //userPost = _textController.value as int;
                   });
                 },
@@ -214,7 +274,7 @@ class _FoodPageState extends State<FoodPage> {
                   Expanded(
                       child: Container(
                           child: Center(
-                    child: Text('Total calories burnt: ',
+                    child: Text('Total calories taken: ',
                         textAlign: TextAlign.left,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -224,7 +284,7 @@ class _FoodPageState extends State<FoodPage> {
                   Expanded(
                       child: Container(
                           child: Center(
-                              child: Text("$userPost",
+                              child: Text("$_userPost" "  kcal",
                                   textAlign: TextAlign.left,
                                   style: TextStyle(fontSize: 35))))),
                 ],
@@ -235,11 +295,6 @@ class _FoodPageState extends State<FoodPage> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-            backgroundColor: Colors.grey,
-          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.fastfood),
             label: 'Food',
@@ -253,6 +308,11 @@ class _FoodPageState extends State<FoodPage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.feed),
             label: 'Feedback',
+            backgroundColor: Colors.grey,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
             backgroundColor: Colors.grey,
           ),
         ],

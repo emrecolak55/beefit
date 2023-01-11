@@ -51,9 +51,10 @@ class _LoginPageState extends State<LoginPage> {
             email: 'john@example.com',
             age: 30,
             height: 75,
+            gender: 'Male',
             weight: 75,
             photoUrl:
-                'https://mymodernmet.com/wp/wp-content/uploads/2019/09/100k-ai-faces-5.jpg',
+                'https://this-person-does-not-exist.com/img/avatar-dd367695480fd226ae1eda9e00fe8400.jpg',
           ),
         ),
       );
@@ -79,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 58,
-                        fontFamily: 'Montserrat')),
+                        fontFamily: 'RobotoMono')),
                 Center(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -157,8 +158,8 @@ class _LoginPageState extends State<LoginPage> {
                 Container(
                   child: ElevatedButton(
                       onPressed:
-                          signInWithEmailAndPassword, // firebase sign in call
-
+                          //signInWithEmailAndPassword, // firebase sign in call
+                          goToProfile,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.purple,
                       ),

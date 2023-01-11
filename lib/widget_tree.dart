@@ -21,8 +21,9 @@ class _WidgetTreeState extends State<WidgetTree> {
           return ProfilePage(
             age: 25,
             height: 30,
-            email: 'sdasd@gmail.com',
-            name: 'Colak',
+            email: 'johndoe@gmail.com',
+            name: 'John',
+            gender: 'Male',
             photoUrl: '',
             weight: 12,
           );

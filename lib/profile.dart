@@ -1,6 +1,7 @@
 import 'package:beefit/inputs.dart';
 import 'package:beefit/feedback.dart';
 import 'package:flutter/material.dart';
+import 'package:beefit/food.dart';
 
 import 'auth.dart';
 
@@ -20,6 +21,7 @@ class ProfilePage extends StatefulWidget {
     required this.height,
     required this.weight,
     required this.photoUrl,
+    required String gender,
   }) : super(key: key);
 
   @override
@@ -63,16 +65,17 @@ class _ProfilePageState extends State<ProfilePage> {
                       email: 'john@example.com',
                       age: 30,
                       height: 75,
+                      gender: 'Male',
                       weight: 75,
                       photoUrl:
-                          'https://mymodernmet.com/wp/wp-content/uploads/2019/09/100k-ai-faces-5.jpg',
+                          'https://this-person-does-not-exist.com/img/avatar-dd367695480fd226ae1eda9e00fe8400.jpg',
                     )),
           );
           break;
         case 1:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => FoodInputPage()),
+            MaterialPageRoute(builder: (context) => FoodPage()),
           );
           break;
         case 2:
@@ -89,20 +92,20 @@ class _ProfilePageState extends State<ProfilePage> {
   Future<void> signOut() async {
     await Auth().signOut();
   }
-
+/*
   Widget _signOutButton() {
     return ElevatedButton(
       onPressed: signOut,
       child: const Text('Sign Out'),
     );
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
         children: [
-          _signOutButton(),
+          //_signOutButton(),
           Container(
             height: 300,
             color: Colors.grey[200],
@@ -117,7 +120,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       shape: BoxShape.circle,
                       image: DecorationImage(
                         image: NetworkImage(
-                            'https://this-person-does-not-exist.com/img/avatar-796f2700adb942342f62c69e9aff949a.jpg'),
+                            'https://this-person-does-not-exist.com/img/avatar-dd367695480fd226ae1eda9e00fe8400.jpgs'),
                         fit: BoxFit.cover,
                       ),
                     ),
